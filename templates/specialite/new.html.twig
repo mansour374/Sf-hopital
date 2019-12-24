@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    {{  form_start(formSpecialite) }}
+        {{ form_row(formSpecialite.libelle, {'attr': {'placeholder': "Nom Spécialité"}}) }}
+        {{ form_row(formSpecialite.medecins) }}
+        {{ form_row(formSpecialite.service) }}
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+    {{ form_end(formSpecialite) }}
+    
+{% endblock %}

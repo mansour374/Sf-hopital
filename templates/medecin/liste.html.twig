@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{% endblock %}
+
+{% block body %}
+   
+   <h2>Listes des Medecins</h2>
+    <table  class="table table-hover table-striped" >
+      <thead>
+        <tr class="table-info">
+          <th scope="col">Matricule</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Email</th>
+          <th scope="col">Téléphone</th>
+          <th colspan scope="col">Naissance</th>
+          <th scope="col">Service</th>
+          <th scope="col">Spécialité</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+    <tbody>
+        {% for medecin in medecins %}
+      <tr class="table-light">
+              <td>{{ medecin.matricule }}</td>
+              <td>{{ medecin.prenom }}</td>
+              <td>{{ medecin.nom }}</td>
+              <td>{{ medecin.email }}</td>
+              <td>{{ medecin.telephone }}</td>
+              <td>{{ medecin.naissance | date('d/m/Y') }}</td>
+              <td>{{ medecin.service.libelle }}</td> 
+              <td> {% for specialite in  medecin.specialite %}
+                  {{ specialite.libelle }} 
+                {% endfor %} </td>
+              <td><a href=" {{ path('medecin_edit', { id: medecin.id} ) }}" class='btn btn-pill btn-success'>Modifier</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table> 
+{% endblock %} 

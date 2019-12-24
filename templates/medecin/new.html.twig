@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Ajout Medecin{% endblock %}
+
+{% block body %}
+
+     <h2>
+     {% if editMode %}
+            Formulare de modification d'un medecin
+        {% else %}
+            Formulaire d'ajout d'un medecin
+        {% endif %}
+        
+     </h2>
+    <form class="needs-validation" novlidate>
+        <div class="form-row">
+        {{  form_start(form) }}
+            <div = class="col-md-4 mb">
+        {{ form_row(form.prenom , {'attr': {'placeholder': "Prenom "}} )}}
+        </div>
+        <div = class="col-md-4 mb">
+        {{ form_row(form.nom , {'attr': {'placeholder': "Nom "}} )}}
+            </div>
+        <div = class="col-md-4 mb">
+        {{ form_row(form.email , {'attr': {'placeholder': "Adresse Email "}} )}}
+            </div>
+        <div = class="col-md-4 mb">
+        {{ form_row(form.telephone , {'attr': {'placeholder': "Numero Phone "}} )}}
+            </div>
+        <div = class="col-md-4 mb">
+        {{ form_row(form.naissance , {'attr': {'placeholder': "Date Naissance "}} )}}
+            </div>
+        <div = class="col-md-4 mb">
+        {{ form_row(form.service  )}}
+        </div>
+        <div class="col-md-4 mb">
+            <div = class="form-chekh-input ">
+            {{ form_row(form.specialite, {'attr': {class :"form-check form-check-inline"  }} )}}  
+            </div>
+        </div>
+        </div>
+    </form>        
+        <div = class="col-md-4 mb">
+            <button type="submit" class="btn btn-success">
+            {% if editMode %}
+                Enregistrer les modifications
+            {% else %}
+                Ajouter Medecin
+            {% endif %}
+            </button>
+            </div>
+        {{ form_end(form) }}
+  
+{% endblock %}
